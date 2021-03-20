@@ -6,5 +6,5 @@ Containing Hei's attempts at making Procreate brushes.
 - intention: grass
 - result: good for fluffy clouds
 ### Labour-intense Flare
-- intention: make painting distant city light easy
+- intention: make painting distant city lights easy
 - result: need to hit the same spot 5-10 times to get good flare effect
