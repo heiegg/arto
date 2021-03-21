@@ -1,0 +1,147 @@
+\documentclass{amsart}
+\newcommand{\cC}{\mathcal {C}}
+\newcommand{\RR}{\mathbb {R}}
+\newcommand{\PP}{\mathbb {P}}
+\newcommand {\bv} {\mathbf {v}}
+\newcommand {\bw} {\mathbf {w}}
+\newcommand {\be} {\mathbf {e}}
+\usepackage{tikz-cd}
+\title {Obnoxious notes to perspective drawing}
+\author {Hei}
+\begin{document}
+\maketitle
+These are our notes to studying perspective without the crutch of cubes. Oh, well, as we added some notes on how to apply this to drawing, there are cubes now.  We think this definitely helped with our
+drawing skills.  Please let us know any inaccuracies.
+
+\section{The Perspective Projection Map}
+\label{sec:persp-proj-map}
+
+We consider the $3$-dimensional Euclidean space $\RR^3$. Let $V$ be the viewing plane and $O$ be the eye point. Then the perspective drawing is, in essence,
+the projection to $V$ with respect to $O$. More precisely, the image of a point $P$ in space is the point of
+intersection of the line $OP$ and the plane $V$. Let $f$ denote this map.
+
+[TODO: figure of map]
+
+Without loss of generality, we set $O$ to be the origin and $V$ to be the plane $z=1$. Then the map $f$ is given by:
+\begin{align*}
+  f: \RR^3\backslash \{z=0\} &\rightarrow V \\
+  (x,y,z) &\mapsto (x/z,y/z,1).
+\end{align*}
+We may identify the affine space $V$ with $\RR^2$ by taking the vector part, more precisely, by dropping the $z$-coordinate. In application, we restrict $f$ to the domain  $z>0$.
+
+Let $W$ be a plane. As long as $W$ does not pass $O$, then $f|_W$ is a bijection.
+
+Let $C$ be intersection of the locus of a degree $n$ polynomial $p$ with the plane $W$, i.e., the points on $C$ satisfies $p$ in addition to a degree $1$ polynomial. In this case, it is easy to see that points on the image of $C$ also satisfies a degree $n$ polynomial.
+
+In particular, $f$  maps lines to lines and conics to conics. Signature is not preserved however. Thus it is possible for the types of conics to change. In application, the image of an ellipse must be an ellipse; otherwise, the source ellipse intersects the $xy$-plane. This can be seen by going back to the original meaning of conics: curves cut from cones by planes.
+
+
+
+\section{The Vanishing Point}
+\label{sec:vanishing-point}
+
+Let $\bv$ be a vector. Let $\ell$ be a line passing through a point $P$ and parallel to $\bv$. Then points on $\ell$ can be parametrised as
+\begin{equation*}
+  P + t\bv,\qquad t\in\RR.
+\end{equation*}
+% Assume that when $t$ increases, the points go farther away from $V$. In particular, this assumes that $\bv$ is not parallel to $V$.
+Let the coordinates of $P$ be given by $(x_P,y_P,z_P)$ and $\bv$ given by $(v_1,v_2,v_3)$. Then if $v_3\neq 0$, i.e., $\bv$ is not parallel to $V$, then
+\begin{equation*}
+  \lim_{t\rightarrow \infty} f (P + t\bv)
+  = \lim_{t\rightarrow \infty} (\frac{x_P+tv_1}{z_P+tv_3},\frac{y_P+tv_2}{z_P+tv_3},1)
+  = (\frac{v_1}{v_3},\frac{v_2}{v_3},1).
+\end{equation*}
+This point is called the vanishing point of $\ell$. If $v_3=0$, we should consider infinity to be the vanishing point. The meaning of infinity and which infinity point can be made precise by using projective geometry.
+Let $\cC_\bv$ be the collection of lines parallel to $\bv$. In fact, the vanishing point depends only on $\bv$, not on the choice of $\ell$ in $\cC_\bv$. Let $\cC_\bv$ be the collection of lines parallel to $\bv$. Thus every line in $\cC_\bv$ has the same vanishing point. Thus their images appear to radiate from one point. Note that if we restrict to the $z>0$ part, the image is a ray.
+
+[TODO: figure of VP for parallel lines.]
+
+
+Let $\ell_O$ be the line which is parallel to $v$ and which contains $O$. Geometrically the vanishing point for $\cC_\bv$ is just the point of intersection of $\ell_O$ and $V$.
+
+Thus we can answer the question of how many vanishing points there are in a drawing. The answer is the number of lines with different direction vectors. In scenes like cityscape, there are generally three sets of parallel lines with different direction vectors. Each produces a vanishing point as long as the set of lines are not parallel to $V$. We get the so-called 3-point, 2-point and 1-point perspectives.
+
+Let $W$ be a plane. The set of vanishing points of lines contained in $W$ form a line. Geometrically it is given by intersecting the plane passing through $O$ and parallel to $W$ with $V$. Let us call it the vanishing line of $W$. In application, when $W$ is taken to be the ground plane, the  vanishing line  of $W$ is usually called the horizon or eye level.
+
+[TODO: figure of VL for parallel planes.]
+
+In practice, image of lines are easy to determine once we put down the vanishing points. If we know a point to be the intersections of two lines, we may find its image by finding the intersection of the images of the two lines. As line segments of the same length do not map to line segments of the same length under the perspective projection, this provides an easy way to determine location of image of a point. We can find the image of the centre of a rectangle by intersecting the diagonals of the image of the rectangle, for example. Once we know the image of the centre, we can find image of the disecting points and hence we know how to find the image of the rectangle that extends the original rectangle by one time of its width.
+
+\section{Measuring Distance}
+\label{sec:transfer-distance}
+
+The aim of this section is to study images of line segments of equal length. In application, essentially we operate on $V$ only. One problem arises often. We have the image of a line segment as reference. How do we find the image of the same length along another line?
+
+What we have available are the vanishing points and the reference line segment on $V$. Once we supply the information of the relative position of $O$ to the lines, then we can transfer the distance from one line to another.
+
+Let $\ell$ be a line. Let $P$ and $Q$ be two points on $\ell$.  Let $\ell'$ be another line that passes through $P$. Let $R$ be a point on $\ell'$ such that $|PQ|=|PR|$. Let $A$ be the vanishing point of $\ell$ and $B$ that of $\ell'$. We would like to find $f (R)$ in terms of $f (P)$, $f (Q)$, $A$ and $B$.
+
+One  observation is that if we know the vanishing point $C$ of $QR$ then $f (R)$ can be found as the intersection of the line connecting $CQ$ and the line connecting $BP$. However the location of $C$ cannot be determined by $f (P)$, $f (Q)$, $A$ and $B$ alone.  We need an additional piece of data,  the location of $O$ relative to $\ell$ and $\ell'$. We focus on the plane $W$ through $O$ and parallel to both $\ell$ and $\ell'$. We translate $\ell$ and $\ell'$ to $W$ along a vector that is parallel to $V$ and orthogonal to $AB$. We use superscript $t$ to denote the translated object. On $(\ell')^t$ find the point $S$ such that $|P^tS|=|P^tQ^t|$. Note that $QR$ is parallel to $Q^tS$. Then $C$ is the intersection of $AB$ and $Q^tS$.
+
+[TODO: figure view of $V$.]
+
+[TODO: figure view of $W$ to get $C$]
+
+In practice, $\ell$ and $\ell'$ are orthogonal, forming two edges of a cube.
+
+\section{Application to Drawing}
+\label{sec:application-drawing}
+
+\subsection{Centre of rectangle and extension of length}
+\label{sec:centre-rect-extens}
+
+This is already mentioned above.
+
+\subsection{Shadow}
+\label{sec:shadow}
+
+This is an application of the intersection method. One common need is to find the cast shadow of a stick that stands vertically on the ground under sunlight. Sunlight can be considered as parallel light with given direction $\bv$. The location of shadow of the foot $F$ of the stick is obvious. Let $P$ be the top of the stick. The location of shadow $Q$ of top of stick lies on the line parallel to $\bv$ through $P$. It also lies on the ground plane $G$. Thus it lies on the line $L$ that is the intersection of the plane parallel to the vertical direction and $\bv$ through $P$ and the plane $G$. Also consider the line $M$ through the shadow point $Q$ on the ground $G$ perpendicular to $V$. If we consider the component $\bw$ of light that is parallel to $V$, then the line through $P$ along $\bw$ intersects $M$ and call the intersection $R$. Thus we get two lines whose intersection gives the shadow point $Q$.
+
+To find the image of $Q$ on $V$, we consider the two families of parallel lines determined by $L$ and $M$ respectively. The family of parallel lines associated to $L$ produces a vanishing point, which we call the ground vanishing point of light (GVPL). Thus $f (Q)$ lies on the line connecting $f (F)$ and GVPL. The point $f (R)$ is easy to find, if we know $f (F)$ and the horizon line and the $V$-component $\bw$ of $\bv$. Let $C$ be the vanishing point for the receding lines that are parallel to the normal of $V$. Then $f (Q)$ also lies on the line connecting $C$ and $f (R)$. Then using the intersection of the two lines we find $f (Q)$.
+
+Summary: Shadow of top=(GLVP--foot) $\cap$ (centre--horizontal shadow drop).
+
+This can be generalised to finding cast shadow of any point to any plane which may not be orthogonal to the viewing plane. In this case direction of light can be encoded in vanishing point of shadow on the plane and vanishing point of component of light on the plane which is orthogonal to the given plane and which is parallel to the line of intersection of the given plane and the viewing plane. We should give this plane a name to avoid long-winded sentences.
+
+\section{Projective Geometry}
+\label{sec:projective-geometry}
+
+It is cumbersome to always have to differentiate between the cases when family of parallel lines has image lines that radiate from one point or lines that remain parallel. It is best to add points at `infinity'. How many points of infinities are there? In $\RR^2$ the families of parallel lines are indexed by direction vectors. Thus we should glue on $\PP^1:= (\RR^2 - \{0\})/\RR^\times$ of them. This gives us the projective space $\PP^2$, in which $\RR^2$ is embedded as follows:
+\begin{align*}
+  \RR^2 &\rightarrow \PP^2 \\
+  (x,y) &\mapsto (x:y:1)
+\end{align*}
+while points at infinity embed as follows:
+\begin{align*}
+  \PP^1 &\rightarrow \PP^2\\
+  (a:b) &\mapsto (a:b:0).
+\end{align*}
+Once we call the point $(a:b:0)$ the vanishing point of family of parallel line along the vector $(a,b,0)$, then we can write the theory in a more uniform way.
+
+\section{Intersection Method}
+\label{sec:intersection-method}
+
+One can use two VLs to determine VP of the intersection  line and one can also use VPs of two lines to determine VL of the plane parallel to both lines.
+
+% For planes parallel to $V$, the effect of $f$ is obvious.
+% \begin{equation*}
+%   \begin{tikzcd}
+%     \{z=z_0\} \ar [r] \ar [d,"\simeq",sloped] & V \ar [d,"\simeq", sloped]\\
+%     \RR^2 \ar [r] & \RR^2 \\ [-10pt]
+%     (x,y)\ar [r,mapsto] &(x/z_0,y/z_0),
+%   \end{tikzcd}
+% \end{equation*}
+% which is just scaling. Here the two vertical arrows means dropping $z$-coordinate. Thus an equispaced grid does the job.
+
+
+
+% Next we consider a line $\ell$ not parallel to $V$. Let $A$ be the vanishing point of $\ell$ and $P$ the intersection of $\ell$ and $V$. Take orthonormal basis for $V$ (more precisely, the vector part of $V$) where one basis vector $\be_1$ is along the direction of $f (\ell)$ and the other $\be_2$ orthogonal to $f (\ell)$. This produces a grid on $V$. The aim now is to locate the image of the point on $\ell$ that is at $x$ units to  $P$.
+
+% Let $Q=P+x\be_1$ and $R=P+x\be_2$. Let $S$ be the point on $\ell$ at distance $x$ to $P$. Let $B$ be the vanishing point of $QS$. It lies on $f (\ell)$. Then we can locate $f (S)$ geometrically as follows. Let $T=Q+x\be_2$. Find the intersection of $AR$ and $BT$. Then project it orthogonally to $f (\ell)$. The image is $f (S)$. When we take $x$ to be integers, we produce a grid on $\ell$.
+
+% [TODO: figure of how to find $S$.]
+
+% In practice, one usually sets up vanishing points for lines corresponding to edges of a cube first. Then one may use the top down view to plot out the vanishing points for the 3 diagonal lines on facets of the cube. Then the vertices of the cube can be found using the method outlined above. In this way we can form a `3d grid' on $V$.
+
+% [TODO: figure of grid on $V$.]
+\end{document}

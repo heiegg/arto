@@ -1,0 +1,48 @@
+\documentclass{amsart}
+\newcommand {\rL} {\mathrm {L}}
+\newcommand {\rM} {\mathrm {M}}
+\newcommand {\rS} {\mathrm {S}}
+\title {Notes on colour theory}
+\begin{document}
+\maketitle
+The main reference is \cite{briggs-dim-colour} and articles on light on Wikipedia.
+
+\section{Auspicious beginning of notes on colour theory}
+\label{sec:ausp-beginn-notes}
+
+
+What is colour?
+
+It is a sensation arising from light hitting you.
+
+What is light?
+
+Lol, as if we knew. Here's an attempt. It is electromagnetic wave and also a bunch of photon particles.
+
+\section{Speculations based on shaky foundation to the best of our knowledge}
+\label{sec:spec-best-our}
+
+
+
+As electromagnetic wave, light has properties such as frequencies $f$ and wavelengths $\lambda$. By property of wave, $f\lambda = c$ where $c$ is the speed of light in the medium. Different wavelengths cause the cones in human eyes to produce varying responses. (The cones are in a fixed medium. It is not clear to us if the wavelengths of light in various charts in the references are tied to this particular medium or not.) Each parcel of light carries energy. The energy of a photon with frequency $f$ is equal to $hf$ where $h$ is the Planck constant.
+
+Now consider the scenario of looking at an object. Light has bounced around or got absorbed and re-emitted etc and finally reaches your eye. Specular reflection generally does not change the frequency distribution of light, while diffuse reflection causes changes\cite [Sec.~2.1] {briggs-dim-colour}. We suppose one can always design devious material to make this false.
+
+Assume you are a generic human. Then you are tri-chromatic with cones of types L, M and S. For given light, let $n (f)$ be the number of photons as a function of given frequency $f$. Since  energy carried by the  photons of given frequency is proportional to their number, $n$ is similar to  spectral power distribution of the light and we will call it spectral distribution of the given light. For each frequency, each type of cones produce a response of a certain strength. The more photons, the stronger the response.  Let the response function be $r_i (f,n)$ where $f$ is the frequency and $n$ the number of photons with frequency $f$ hitting one cone of type $i$ per unit time. Here $i$ is L or M or S.  It seems that $r_i$ is largely linear with respect to $n$ at least when $n$ is not too small or too big. There is always some threshold you need to go beyond to get any response and when you are hit by too much energy, you die in general. Then we get the total response $R_i$ to the given light for each type of cone by integrating over all frequencies. This is actually a finite sum as we have only finitely many photons hitting you per unit time. Note that $n$ is a function of $f$ when the light is given. With $R_i$'s produced, they are transformed by opponent cells into three other outputs, one being achromatic  which  is just  $R_\rL+R_\rM+R_\rS$, the other two being chromatic opponencies, which  are given by $R_\rL-R_\rM$ and $R_\rS- (R_\rL+ R_\rM)$. This is a bijective function. The exact functions may be off, but the next sentence holds regardless.  The former one  measures brightness; the latter two quantities give a quantitative measure of how biased the spectral distribution is. It should be pointed out that a lot of information is lost in this process. Many different frequency distributions give rise to the same responses and they are called metamers and are indistinguishable to your visual system. Let us call the set of  frequency distributions that are metameric to each other a metameric packet.
+
+A naive generalisation to $k$-chromatic creatures is as follows. First they get $R_i$ for $i=1,\ldots,k$ and then these are transformed into brightness and $k-1$  opponencies, which quantify hue and colourfulness. Thus the total sensation/colour space is a domain in a Euclidean space of dimension $k$. This domain should be compact and convex.
+
+Due to the brain's precognitive process (lightness constancy) of compensating for differences in illumination, it is natural to normalise brightness and colourfulness to account for illumination condition. One way to quantify the illumination condition is to use the brightness of a reference object, which should reflect a balanced distribution of frequencies. Thus we define lightness (resp. chroma) as brightness (resp. colourfulness) to brightness of the reference object under the same illumination condition. As lightness and chroma are mostly independent of illumination condition (within a reasonable range), they are perceived as intrinsic to the object. There are other constancies at play, such as colour constancy which makes us to perceive different colours at points  when  our cones produce the same responses. This gives rise to the two different notions of colour, perceived colour and psychophysical colour.
+
+We now try to describe more precisely the normalised sensation/colour space. When we hold lightness constant, the section of the normalised sensation/colour space is of dimension $k-1$. We may perceive this to be a  compact convex $(k-1)$-dimensional domain   that is diffeomorphic to a $(k-1)$-ball. On the boundary of the domain, we sense the most bias in spectral distribution and recognise the points on the boundary as the most intense colours. The boundary of the domian is labelled by hues. Toward the centre, we sense a balanced spectral distribution  and recognise it as neutral like white, grey and black. The distance to the centre is called chroma.
+
+There is a related concept called saturation. It is defined to be colourfulness of object to the brightness of the object. Note that chroma is colourfulness of object to the brightness of the reference object and that lightness is the brightness of the object to the brightness of the reference object. Thus we see that saturation is chroma to lightness. Thus each circular cone (consisting lines of a given slope in each 2D slice passing through the lightness axis) in the normalised sensation/colour space has the same saturation. As the cones  open wider,  saturation increases.
+
+\section{Application}
+\label{sec:application}
+
+Thus painting is trying to reproduce light to cause the same responses of the cones as caused by reflected light of an object. Note that the responses are those before processed by the precognitive lightnesscolour constancy process. Hence picking the right metameric packet is difficult. Mixing paints is also difficult due to our visual system. One has only an estimation of spectral properties of paints when attempting to mix the right metameric packet.
+
+For digital painting, the canvas is the screen which emits light. Its brightness should be calibrated to match that of the environment so that our visual system estimates the correct illumination condition in which to place the digital painting.  Painting digitally still is trying to reproduce light   to cause the same responses of the cones as caused by reflected light of an object. 
+\bibliography{Mybib}\bibliographystyle{plain}
+\end{document}
