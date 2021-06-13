@@ -19,3 +19,7 @@ Hei's rather technical notes
 Notes on linear perspectives
 ### Colour
 Notes on colour theory
+
+## Support me
+If you find the resources useful, consider supporting me on Ko-fi:
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J0Y287)
