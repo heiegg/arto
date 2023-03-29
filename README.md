@@ -22,7 +22,7 @@ Hei's rather technical notes
 Notes on linear perspectives
 ### [Colour](notes/colour.pdf)
 Notes on colour theory
-### [Interference, spectral power distribution to CIE XYZ to RGB conversion](notes/EMwaves.pdf)
+### [Interference, spectral power distribution to CIE XYZ to RGB conversion](notes/EMwave.pdf)
 Companion notes for the code in my [gist](https://gist.github.com/heiegg/980c23abda79d64954290c67b01f2b04).
 
 
